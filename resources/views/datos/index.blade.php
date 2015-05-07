@@ -67,6 +67,11 @@
                     @endfor
                     </tbody>
                   </table>
+                  <h3>Estad&iacute;sticas</h3>
+                  <h5>Distancia promedio</h5>
+                  <p>{{ round($near['stats']['avgDistance'], 2) }} metros</p>
+                  <h5>Distancia m&aacute;xima</h5>
+                  <p>{{ round($near['stats']['maxDistance'], 2) }} metros</p>
             </div><!-- /content-panel -->
         </div><!-- /col-md-12 -->
     </div><!-- /row -->
