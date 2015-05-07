@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index');
 Route::resource('anuncios', 'AnunciosController');
 Route::resource('usuarios', 'UsuariosController');
 Route::resource('datos', 'DatosController');
+Route::get('actualizaciones/municipios', 'ActualizacionesController@getMunicipios');
 Route::resource('actualizaciones', 'ActualizacionesController');
 
 Route::controllers([

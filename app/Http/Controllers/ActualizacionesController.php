@@ -81,4 +81,16 @@ class ActualizacionesController extends Controller {
 		//
 	}
 
+    public function getMunicipios($estado)
+    {
+        $municipios = \DB::collection('reach')
+            ->select('municipality_name')
+            ->where('state_id', '=', $estado)
+            ->groupBy('municipality_name')
+            ->orderBy('municipality_name')
+            ->get();
+
+        return municipios;
+    }
+
 }
