@@ -60,6 +60,24 @@ class DatosController extends Controller {
 			}
 		}
 
+		$mongodb = \DB::getMongoDB();
+
+		$lat = 19.430188;
+		$lng = -99.210867;
+
+		$near = $mongodb->command(array( 
+			'geoNear' => "reach", 
+			'near' => array( 
+				'type' => "Point", 
+				'coordinates' => array(
+					$lng,
+					$lat
+					)
+				), 
+			'spherical' => true, 
+			'maxDistance' => 2500, ));
+
+		//print_r($near);
 		//var_dump($states);
 		//var_dump($municipalities);
 		//print_r($municipalities_array);
@@ -70,7 +88,10 @@ class DatosController extends Controller {
 		->with('states', $states)
 		->with('municipalities_array', $municipalities_array)
 		->with('zip_codes_array', $zip_codes_array)
-		->with('suburbs_array', $suburbs_array);
+		->with('suburbs_array', $suburbs_array)
+		->with('near', $near)
+		->with('lng', $lng)
+		->with('lat', $lat);
 	}
 
 	/**
@@ -78,9 +99,18 @@ class DatosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($state)
 	{
 		//
+		$municipalities = \DB::collection('reach')
+		->select('municipality_name')
+		->where('state_id', '=', $state)
+		->groupBy('municipality_name')
+		->orderBy('municipality_name')
+		->get();
+
+		return $municipalities;
+
 	}
 
 	/**

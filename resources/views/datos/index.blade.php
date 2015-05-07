@@ -8,12 +8,13 @@
     <br>
 
     <div class="row mt">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="content-panel">
                 <table class="table table-bordered table-striped table-advance table-hover">
                     <thead>
                     <tr>
                         <th> Estados</th>
+                        <th>Bot&oacute;n</th>
                         <th> Municipios/Delegaciones</th>
                         <th> Colonias</th>
                         <th> C&oacute;digo Postal</th>
@@ -30,97 +31,42 @@
                                 </select>  
                             </td>
                             <td>
-                                <input id="municipalities" class="form-control">
+                              <button id="update_municipality" class="btn btn-success">Actualizar</button>
                             </td>
                             <td>
-                                <input id="suburbs" class="form-control">
+                                <input id="municipalities" class="form-control js-example-data-array
+">
                             </td>
                             <td>
-                                <input id="zip_codes" class="form-control">
+                                <input id="suburbs" class="form-control js-example-data-array
+">
+                            </td>
+                            <td>
+                                <input id="zip_codes" class="form-control js-example-data-array
+">
                             </td>
                         </tr>
-                    {{--<tr>
-                        <td>Distrito Federal</td>
-                        <td>
-                            <select class="form-control" name="municipios" id="municipios">
-                                <option value="Alvaro_Obregon">Álvaro Obregón</option>
-                                <option value="Cuauhtemoc">Cuauhtémoc</option>
-                                <option value="Iztapalapa">Iztapalapa</option>
-                                <option value="Miguel_Hidalgo">Miguel Hidalgo</option>
-                                <option value="Tlahuac">Tlahuac</option>
-                                <option value="XOchimilco">Xochimilco</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-control" name="colonias" id="colonias">
-                                <option value=""></option>
-                                <option value="colonia1">Colonia 1</option>
-                                <option value="colonia2">Colonia 2</option>
-                                <option value="colonia3">Colonia 3</option>
-                                <option value="colonia4">Colonia 4</option>
-                                <option value="colonia5">Colonia 5</option>
-                            </select>
-                        </td>
-                        <td><!-- <input type="text" disabled="" size="5" id="zip"> --></td>
-                        <td>
-                            <label>Latitud:</label><!--<input disabled="" type="text" size="12" id="latitud">--><br>
-                            <label>Longitud:</label><!--<input disabled="" type="text" size="12" id="longitud">-->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Oaxaca</td>
-                        <td>
-                            <select class="form-control" name="municipios" id="municipios">
-                                <option value="">Santa Lucía del camino</option>
-                                <option value="">San Bartolo Toyotepec</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-control" name="colonias" id="colonias">
-                                <option value=""></option>
-                                <option value="colonia1">Colonia 1</option>
-                                <option value="colonia2">Colonia 2</option>
-                                <option value="colonia3">Colonia 3</option>
-                                <option value="colonia4">Colonia 4</option>
-                                <option value="colonia5">Colonia 5</option>
-                            </select>
-                        </td>
-                        <td><!--<input type="text" disabled="" size="5" id="zip">--></td>
-                        <td>
-                            <label>Latitud:</label><!--<input disabled="" type="text" size="12" id="latitud">--><br>
-                            <label>Longitud:</label><!--<input disabled="" type="text" size="12" id="longitud">-->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Coahuila</td>
-                        <td>
-                            <select class="form-control" name="municipios" id="municipios">
-                                <option value="">Saltillo</option>
-                                <option value="">Torreón</option>
-                                <option value="">Piedras Negras</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select class="form-control" name="colonias" id="colonias">
-                                <option value=""></option>
-                                <option value="colonia1">Colonia 1</option>
-                                <option value="colonia2">Colonia 2</option>
-                                <option value="colonia3">Colonia 3</option>
-                                <option value="colonia4">Colonia 4</option>
-                                <option value="colonia5">Colonia 5</option>
-                            </select>
-                        </td>
-                        <td><!--<input type="text" disabled="" size="5" id="zip">--></td>
-                        <td>
-                            <label>Latitud:</label><!--<input disabled="" type="text" size="12" id="latitud">--><br>
-                            <label>Longitud:</label><!--<input disabled="" type="text" size="12" id="longitud">-->
-                        </td>
-                    </tr> --}}
-
                     </tbody>
                 </table>
+                <h3>Localidades cercanas a las coordenadas [{{$lat}}, {{$lng}}]</h3>
+                  <table class="table table-bordered table-striped table-advance table-hover">
+                    <thead>
+                      <tr>
+                        <th>Localidad</th>
+                        <th>C&oacute;digo Postal</th>
+                        <th>Distancia</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @for($j = 0; $j < sizeof($near['results']); $j++)
+                      <tr>
+                        <td> {{ $near['results'][$j]['obj']['suburb_id'] }} </td>
+                        <td> {{ $near['results'][$j]['obj']['zip_code'] }} </td>
+                        <td> {{ round($near['results'][$j]['dis'], 2) }} metros </td> 
+                      </tr>  
+                    @endfor
+                    </tbody>
+                  </table>
             </div><!-- /content-panel -->
         </div><!-- /col-md-12 -->
     </div><!-- /row -->
@@ -154,6 +100,10 @@
         $( "#suburbs" ).autocomplete({
           source: availableTags
         });
+        $(".js-example-data-array").select2({
+            data: sub
+        });
+
       });
     </script>
 
