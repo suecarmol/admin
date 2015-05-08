@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\PeticionRequest;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
 
 class ActualizacionesController extends Controller {
 
@@ -14,7 +15,15 @@ class ActualizacionesController extends Controller {
 	 */
 	public function index()
 	{
-		return view('actualizaciones.index');
+        $states = \DB::collection('reach')
+            ->select('state_name')
+            ->groupBy('state_name')
+            ->orderBy('state_name')
+            ->get();
+
+        return view('actualizaciones.index')
+            ->with('states', $states);
+
 	}
 
 	/**
@@ -81,16 +90,25 @@ class ActualizacionesController extends Controller {
 		//
 	}
 
-    public function getMunicipios($estado)
+    public function getMunicipios(PeticionRequest $request)
     {
+        $estado = $request->get('estado');
+
         $municipios = \DB::collection('reach')
-            ->select('municipality_name')
-            ->where('state_id', '=', $estado)
-            ->groupBy('municipality_name')
-            ->orderBy('municipality_name')
+            ->select('municipality_name as text')
+            ->where('state_id','=',$estado)
+            ->orderBy('text')
             ->get();
 
-        return municipios;
+
+
+            //->select('municipality_id AS id', 'municipality_name AS text')
+            //->where('state_id', '=', $estado)
+            //////->groupBy('municipality_name')
+            //->orderBy('text')
+            //->get();
+
+        return $municipios;
     }
 
 }
