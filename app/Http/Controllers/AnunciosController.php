@@ -14,7 +14,14 @@ class AnunciosController extends Controller {
 	 */
 	public function index()
 	{
-		return view('anuncios.index');
+        $states = \DB::collection('reach')
+            ->select('state_name')
+            ->groupBy('state_name')
+            ->orderBy('state_name')
+            ->get();
+
+        return view('anuncios.index')
+            ->with('states', $states);
 	}
 
 	/**

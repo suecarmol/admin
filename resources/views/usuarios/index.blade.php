@@ -8,7 +8,7 @@
     <br><br>
     <div class="row mt">
         <div class="col-lg-12">
-            <a href="{{ url('auth/register') }}"><button class="btn btn-lg btn-primary">Registrar Usuario</button></a>
+            <!--<a href="{{ url('auth/register') }}"><button class="btn btn-lg btn-primary">Registrar Usuario</button></a>-->
         </div>
     </div>
 
@@ -24,7 +24,7 @@
                         <th class="hidden-phone"><i class="fa fa-question-circle"></i> Apellidos</th>
                         <th><i class="fa fa-bookmark"></i> E-Mail</th>
                         <th><i class=" fa fa-edit"></i> Password</th>
-                        <th></th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -33,30 +33,21 @@
                         <td class="hidden-phone">Silva González</td>
                         <td> 	A01018723@itesm.mx </td>
                         <td> 	$2y$10$RoyUJKWc8a2OvZBnOGTIs.O2ZlLh4G2Ds9kD/JMTOPPnpAKSHK4r6</td>
-                        <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
+                     
                     </tr>
                     <tr>
                         <td>Susana</td>
                         <td class="hidden-phone">Cárdenas Molinar</td>
                         <td> 	A01017722@itesm.mx </td>
                         <td> 	$2y$10$RoyUJKWc8a2OvZBnOGTIs.O2ZlLh4G2Ds9kD/JMTOPPnpAKSHK4r6</td>
-                        <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
+
                     </tr>
                     <tr>
                         <td>Eduardo</td>
                         <td class="hidden-phone">Garcia Posadas</td>
                         <td> 	A01167366@itesm.mx </td>
                         <td> 	$2y$10$RoyUJKWc8a2OvZBnOGTIs.O2ZlLh4G2Ds9kD/JMTOPPnpAKSHK4r6</td>
-                        <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                        </td>
+
                     </tr>
 
                     </tbody>
@@ -64,6 +55,8 @@
             </div><!-- /content-panel -->
         </div><!-- /col-md-12 -->
     </div><!-- /row -->
+
+
 @stop
 
 @section('scripts')

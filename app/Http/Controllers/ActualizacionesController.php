@@ -95,20 +95,90 @@ class ActualizacionesController extends Controller {
         $estado = $request->get('estado');
 
         $municipios = \DB::collection('reach')
-            ->select('municipality_name as text')
+            ->select('municipality_name')
             ->where('state_id','=',$estado)
-            ->orderBy('text')
+            ->orderBy('municipality_name')
             ->get();
 
-
-
-            //->select('municipality_id AS id', 'municipality_name AS text')
-            //->where('state_id', '=', $estado)
-            //////->groupBy('municipality_name')
-            //->orderBy('text')
-            //->get();
-
         return $municipios;
+    }
+
+    public function getColonias(PeticionRequest $request)
+    {
+        $municipio = $request->get('municipio');
+
+        $colonias = \DB::collection('reach')
+            ->select('suburb_name')
+            ->where('municipality_id','=',$municipio)
+            ->orderBy('name')
+            ->get();
+
+        return $colonias;
+    }
+
+    public function getCoordenadascolonia(PeticionRequest $request)
+    {
+        $colonia = $request->get('colonia');
+
+        $coordenadas = \DB::collection('reach')
+            ->select('loc.coordinates')
+            ->where('suburb_id','=',$colonia)
+            ->get();
+
+        return $coordenadas;
+    }
+
+    public function getZip(PeticionRequest $request)
+    {
+        $colonia = $request->get('colonia');
+
+        $zips = \DB::collection('reach')
+            ->select('zip_code')
+            ->where('suburb_id','=',$colonia)
+            ->orderBy('zip_code')
+            ->get();
+
+        return $zips;
+    }
+
+    public function getCoordenadaszip(PeticionRequest $request)
+    {
+        $zip = $request->get('zip');
+
+        $coordenadas = \DB::collection('reach')
+            ->select('loc.coordinates')
+            ->where('zip_code','=',$zip)
+            ->get();
+
+        return $coordenadas;
+    }
+
+    public function getBusqueda(PeticionRequest $request)
+    {
+
+        $mongodb = \DB::getMongoDB();
+
+        $lat = $request->get('latitud');
+        $lng = $request->get('longitud');
+        $rango = $request->get('rango');
+
+        $lat = floatval($lat);
+        $lng = floatval($lng);
+        $rango = intval($rango);
+
+        $near = $mongodb->command(array(
+            'geoNear' => "reach",
+            'near' => array(
+                'type' => "Point",
+                'coordinates' => array(
+                    $lng,
+                    $lat
+                )
+            ),
+            'spherical' => true,
+            'maxDistance' => $rango ));
+
+        return $near;
     }
 
 }

@@ -17,6 +17,11 @@ Route::resource('anuncios', 'AnunciosController');
 Route::resource('usuarios', 'UsuariosController');
 Route::resource('datos', 'DatosController');
 Route::get('actualizaciones/municipios', 'ActualizacionesController@getMunicipios');
+Route::get('actualizaciones/colonias', 'ActualizacionesController@getColonias');
+Route::get('actualizaciones/zip', 'ActualizacionesController@getZip');
+Route::get('actualizaciones/coordenadas_colonia', 'ActualizacionesController@getCoordenadascolonia');
+Route::get('actualizaciones/coordenadas_zip', 'ActualizacionesController@getCoordenadaszip');
+Route::get('actualizaciones/busqueda', 'ActualizacionesController@getBusqueda');
 Route::resource('actualizaciones', 'ActualizacionesController');
 
 Route::controllers([

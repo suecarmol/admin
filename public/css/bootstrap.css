@@ -6201,3 +6201,15 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+/* MAPA */
+#mapContainer {
+    overflow:hidden;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+
+}
