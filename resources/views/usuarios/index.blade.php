@@ -33,7 +33,7 @@
                         <td class="hidden-phone">Silva González</td>
                         <td> 	A01018723@itesm.mx </td>
                         <td> 	$2y$10$RoyUJKWc8a2OvZBnOGTIs.O2ZlLh4G2Ds9kD/JMTOPPnpAKSHK4r6</td>
-                     
+
                     </tr>
                     <tr>
                         <td>Susana</td>
