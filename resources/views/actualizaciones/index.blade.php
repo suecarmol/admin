@@ -63,7 +63,9 @@
                     <select id="rango" class="form-control">
                         <option value="100">100 m</option>
                         <option value="1000">1000 m</option>
+                        <option value="2000">2000 m</option>
                         <option value="5000">5000 m</option>
+                        <option value="5500">5500 m</option>
                         <option value="10000">10000 m</option>
                         <option value="20000">20000 m</option>
                     </select>
@@ -110,6 +112,6 @@
     <script>
         $("#li-actualizaciones").addClass('active');
     </script>
-    <script src="{{ asset('public/js/datos.js') }}" ></script>
-    <script src="{{ asset('public/js/busqueda_coordenadas.js') }}" ></script>
+    <script src="{{ asset('js/datos.js') }}" ></script>
+    <script src="{{ asset('js/busqueda_coordenadas.js') }}" ></script>
 @endsection

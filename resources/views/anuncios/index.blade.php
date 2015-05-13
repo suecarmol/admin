@@ -123,8 +123,8 @@
     <script>
         var token = "{{ csrf_token() }}";
     </script>
-    <script src="{{ asset('public/js/datos.js') }}" ></script>
-    <script src="{{ asset('public/js/mapa.js') }}" ></script>
+    <script src="{{ asset('js/datos.js') }}" ></script>
+    <script src="{{ asset('js/mapa.js') }}" ></script>
 
 
 @stop

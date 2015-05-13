@@ -62,8 +62,8 @@ class DatosController extends Controller {
 
 		$mongodb = \DB::getMongoDB();
 
-		$lat = 19.430188;
-		$lng = -99.210867;
+		$lat = 19.41544;
+		$lng = -99.176;
 
 		$near = $mongodb->command(array( 
 			'geoNear' => "reach", 

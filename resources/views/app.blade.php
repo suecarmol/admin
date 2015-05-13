@@ -7,16 +7,19 @@
     <title>Reach</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('public/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!--external css-->
-    <link href="{{ asset('public/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/css/style-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
 
     <!-- Extras -->
-    <link href="{{ asset('public/css/extras.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/extras.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- select2 -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
 
     @yield('head')
 
@@ -39,7 +42,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="{{ url('/') }}" class="logo"><b>Admin</b></a>
+        <a href="{{ url('anuncios') }}" class="logo"><b>Admin</b></a>
         <!--logo end-->
 
         <div class="top-menu">
@@ -73,12 +76,12 @@
                     </a>
                 </li>
 
-                <li class="mt">
+               <!-- <li class="mt">
                     <a id="li-datos" href="{{ url('datos') }}">
                         <i class="fa fa-database"></i>
                         <span>Base de datos</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li class="mt">
                     <a id="li-actualizaciones" href="{{ url('actualizaciones') }}">
@@ -124,17 +127,20 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{{ asset('public/js/jquery.js') }}"></script>
-<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('public/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
-<script src="{{ asset('public/js/jquery.ui.touch-punch.min.js') }}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+<script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
 <script class="include" type="text/javascript" src="{{ asset('js/jquery.dcjqaccordion.2.7.js') }}"></script>
-<script src="{{ asset('public/js/jquery.scrollTo.min.js') }}"></script>
-<script src="{{ asset('public/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('js/jquery.nicescroll.js') }}" type="text/javascript"></script>
 
 
 <!--common script for all pages-->
-<script src="{{ asset('public/js/common-scripts.js') }}"></script>
+<script src="{{ asset('js/common-scripts.js') }}"></script>
+
+<!-- Select2 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
 
 <!--script for this page-->
 
